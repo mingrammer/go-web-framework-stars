@@ -18,3 +18,4 @@ https://github.com/go-chi/chi
 https://github.com/julienschmidt/httprouter
 https://github.com/ivpusic/neo
 https://github.com/valyala/fasthttp
+https://github.com/kataras/iris
