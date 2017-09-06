@@ -57,6 +57,9 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
+			if resp.StatusCode != 200 {
+				log.Fatal(resp.Status)
+			}
 
 			decoder := json.NewDecoder(resp.Body)
 			if err = decoder.Decode(&repo); err != nil {
@@ -85,7 +88,7 @@ func getAccessToken() string {
 	if err != nil {
 		log.Fatal("Error occurs when getting access token")
 	}
-	return string(tokenBytes)
+	return strings.TrimSpace(string(tokenBytes))
 }
 
 func saveRanking(result []Repo) {
