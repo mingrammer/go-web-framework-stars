@@ -19,6 +19,7 @@ type Repo struct {
 	Description string    `json:"description"`
 	Stars       int       `json:"stargazers_count"`
 	Forks       int       `json:"forks_count"`
+	Issues      int       `json:"open_issues_count"`
 	Created     time.Time `json:"created_at"`
 	Updated     time.Time `json:"updated_at"`
 	URL         string    `json:"html_url"`
@@ -29,8 +30,8 @@ const (
 A list of popular github projects related to Go web framework (ranked by stars automatically)
 Please update **list.txt** (via Pull Request)
 
-| Project Name | Stars | Forks | Description |
-| ------------ | ----- | ----- | ----------- |
+| Project Name | Stars | Forks | Open Issues | Description |
+| ------------ | ----- | ----- | ----------- | ----------- |
 `
 	tail = "\n*Last Automatic Update: %v*"
 )
@@ -98,7 +99,7 @@ func saveRanking(result []Repo) {
 	}
 	readme.WriteString(head)
 	for _, repo := range result {
-		readme.WriteString(fmt.Sprintf("| [%s](%s) | %d | %d | %s |\n", repo.Name, repo.URL, repo.Stars, repo.Forks, repo.Description))
+		readme.WriteString(fmt.Sprintf("| [%s](%s) | %d | %d | %d | %s |\n", repo.Name, repo.URL, repo.Stars, repo.Forks, repo.Issues, repo.Description))
 	}
 	readme.WriteString(fmt.Sprintf(tail, time.Now().Format("2006-01-02 15:04:05")))
 }
