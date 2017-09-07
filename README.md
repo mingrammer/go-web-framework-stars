@@ -26,6 +26,7 @@ Please update **list.txt** (via Pull Request)
 | [tango](https://github.com/lunny/tango) | 622 | 91 | Micro & pluggable web framework for Go |
 | [goji](https://github.com/goji/goji) | 518 | 32 | Goji is a minimalistic and flexible HTTP request multiplexer for Go (golang) |
 | [traffic](https://github.com/pilu/traffic) | 515 | 20 | Sinatra inspired regexp/pattern mux and web framework for Go |
+| [dotweb](https://github.com/devfeel/dotweb) | 436 | 75 | Simple and easy go web micro framework |
 | [neo](https://github.com/ivpusic/neo) | 319 | 30 | Go Web Framework |
 | [gorest](https://github.com/tideland/gorest) | 23 | 1 | Tideland Go REST Server Library |
 | [webgo](https://github.com/bnkamalesh/webgo) | 15 | 2 | A very lightweight & simple web framework for Go |
