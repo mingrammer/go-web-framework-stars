@@ -23,3 +23,4 @@ https://github.com/kataras/iris
 https://github.com/bnkamalesh/webgo
 https://github.com/go-swagger/go-swagger
 https://github.com/labstack/armor
+https://github.com/devfeel/dotweb
