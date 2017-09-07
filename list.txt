@@ -20,7 +20,6 @@ https://github.com/ivpusic/neo
 https://github.com/valyala/fasthttp
 https://github.com/tideland/gorest
 https://github.com/kataras/iris
-https://github.com/labstack/armor
 https://github.com/bnkamalesh/webgo
 https://github.com/go-swagger/go-swagger
 https://github.com/labstack/armor
