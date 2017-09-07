@@ -6,7 +6,7 @@ Please update **list.txt** (via Pull Request)
 | ------------ | ----- | ----- | ----------- |
 | [beego](https://github.com/astaxie/beego) | 12195 | 2810 | beego is an open-source, high-performance web framework for the Go programming language. |
 | [gin](https://github.com/gin-gonic/gin) | 11602 | 1357 | Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin. |
-| [martini](https://github.com/go-martini/martini) | 9608 | 1015 | Classy web framework for Go |
+| [martini](https://github.com/go-martini/martini) | 9608 | 1015 | (**No longer maintained**) Classy web framework for Go |
 | [revel](https://github.com/revel/revel) | 8740 | 1158 | A high productivity, full-stack web framework for the Go language. |
 | [echo](https://github.com/labstack/echo) | 8165 | 715 | High performance, minimalist Go web framework |
 | [iris](https://github.com/kataras/iris) | 7544 | 794 | The fastest web framework for Go in (THIS) Earth. HTTP/2 Ready to GO. MVC when you need it. https://docs.iris-go.com |
