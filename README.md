@@ -2,7 +2,7 @@
 A list of popular github projects related to Go web framework (ranked by stars automatically)
 Please update **list.txt** (via Pull Request)
 
-| Project Name | &nbsp;&nbsp;&nbsp;&nbsp;Stars&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;Forks&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;Open Issues&nbsp;&nbsp;&nbsp;&nbsp; | Description |
+| Project&nbsp;Name | &nbsp;&nbsp;&nbsp;&nbsp;Stars&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;Forks&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;Open&nbsp;Issues&nbsp;&nbsp; | Description |
 | ------------ | ------------ | ------------ | ------------ | ----------- |
 | [beego](https://github.com/astaxie/beego)                 | ![](https://img.shields.io/github/stars/astaxie/beego.svg)             | ![](https://img.shields.io/github/forks/astaxie/beego.svg)            | ![](https://img.shields.io/github/issues/astaxie/beego.svg)                  | beego is an open-source, high-performance web framework for the Go programming language. |
 | [gin](https://github.com/gin-gonic/gin)                   | ![](https://img.shields.io/github/stars/gin-gonic/gin.svg)             | ![](https://img.shields.io/github/forks/gin-gonic/gin.svg)            | ![](https://img.shields.io/github/issues/gin-gonic/gin.svg)                  | Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin. |
