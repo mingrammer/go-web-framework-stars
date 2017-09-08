@@ -25,3 +25,4 @@ https://github.com/go-swagger/go-swagger
 https://github.com/labstack/armor
 https://github.com/devfeel/dotweb
 https://github.com/go-kit/kit
+https://github.com/go-macaron/macaron
