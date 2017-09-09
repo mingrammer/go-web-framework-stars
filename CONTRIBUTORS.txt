@@ -1,0 +1,29 @@
+Frank Mueller (2):
+      Added three Tideland projects
+      Removed non-web Tideland projects
+
+Geon Kim (1):
+      Update lists.txt
+
+Ivan Porto Carrero (1):
+      Update list.txt
+
+Kamaleshwar (1):
+      Added webgo to the list.
+
+Olivier Poitrey (1):
+      Add rest-layer
+
+Rob Warner (1):
+      Add Go kit
+
+Tom Maiaroto (1):
+      aegis is a lightweight serverless web framework
+
+Yasuhiro Matsumoto (2):
+      check response status code
+      add Open Issues
+
+devfeel (1):
+      add dotweb
+
