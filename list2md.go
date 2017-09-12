@@ -34,9 +34,17 @@ Please update **list.txt** (via Pull Request)
 | ------------ | ----- | ----- | ----------- | ----------- |
 `
 	tail = "\n*Last Automatic Update: %v*"
+
+	WARNING = "⚠️ No longer maintained ⚠️\n"
 )
 
-var result []Repo
+var (
+	deprecatedRepoMap = map[string]bool{
+		"https://github.com/go-martini/martini": false,
+	}
+
+	result []Repo
+)
 
 func main() {
 	accessToken := getAccessToken()
@@ -99,7 +107,17 @@ func saveRanking(result []Repo) {
 	}
 	readme.WriteString(head)
 	for _, repo := range result {
+		if isDeprecated(repo.URL) {
+			repo.Description = WARNING + repo.Description
+		}
 		readme.WriteString(fmt.Sprintf("| [%s](%s) | %d | %d | %d | %s |\n", repo.Name, repo.URL, repo.Stars, repo.Forks, repo.Issues, repo.Description))
 	}
 	readme.WriteString(fmt.Sprintf(tail, time.Now().Format("2006-01-02 15:04:05")))
+}
+
+func isDeprecated(repoURI string) bool {
+	if _, ok := deprecatedRepoMap[repoURI]; !ok {
+		return !ok
+	}
+	return false
 }
