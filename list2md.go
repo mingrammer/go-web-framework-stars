@@ -39,11 +39,8 @@ Please update **list.txt** (via Pull Request)
 )
 
 var (
-	deprecatedRepoMap = map[string]bool{
-		"https://github.com/go-martini/martini": false,
-	}
-
-	result []Repo
+	deprecatedRepoArr = [1]string{"https://github.com/go-martini/martini"}
+	result            []Repo
 )
 
 func main() {
@@ -116,8 +113,11 @@ func saveRanking(result []Repo) {
 }
 
 func isDeprecated(repoURI string) bool {
-	if _, ok := deprecatedRepoMap[repoURI]; !ok {
-		return !ok
+	size := len(deprecatedRepoArr)
+	for i := 0; i < size; i++ {
+		if repoURI == deprecatedRepoArr[i] {
+			return true
+		}
 	}
 	return false
 }
