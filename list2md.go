@@ -39,7 +39,7 @@ Please update **list.txt** (via Pull Request)
 )
 
 var (
-	deprecatedRepoArr = [1]string{"https://github.com/go-martini/martini"}
+	deprecatedRepo = [1]string{"https://github.com/go-martini/martini"}
 	result            []Repo
 )
 
@@ -112,10 +112,10 @@ func saveRanking(result []Repo) {
 	readme.WriteString(fmt.Sprintf(tail, time.Now().Format("2006-01-02 15:04:05")))
 }
 
-func isDeprecated(repoURI string) bool {
-	size := len(deprecatedRepoArr)
+func isDeprecated(repoURL string) bool {
+	size := len(deprecatedRepo)
 	for i := 0; i < size; i++ {
-		if repoURI == deprecatedRepoArr[i] {
+		if repoURL == deprecatedRepo[i] {
 			return true
 		}
 	}
