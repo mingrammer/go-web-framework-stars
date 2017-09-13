@@ -35,7 +35,7 @@ Please update **list.txt** (via Pull Request)
 `
 	tail = "\n*Last Automatic Update: %v*"
 
-	WARNING = "⚠️ No longer maintained ⚠️\n"
+	WARNING = "⚠️ No longer maintained ⚠️  "
 )
 
 var (

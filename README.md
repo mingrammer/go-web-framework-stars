@@ -6,8 +6,7 @@ Please update **list.txt** (via Pull Request)
 | ------------ | ----- | ----- | ----------- | ----------- |
 | [beego](https://github.com/astaxie/beego) | 12278 | 2822 | 322 | beego is an open-source, high-performance web framework for the Go programming language. |
 | [gin](https://github.com/gin-gonic/gin) | 11750 | 1368 | 118 | Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin. |
-| [martini](https://github.com/go-martini/martini) | 9623 | 1015 | 1 | ⚠️ No longer maintained ⚠️
-Classy web framework for Go |
+| [martini](https://github.com/go-martini/martini) | 9623 | 1015 | 1 | ⚠️ No longer maintained ⚠️  Classy web framework for Go |
 | [revel](https://github.com/revel/revel) | 8770 | 1158 | 53 | A high productivity, full-stack web framework for the Go language. |
 | [echo](https://github.com/labstack/echo) | 8232 | 716 | 86 | High performance, minimalist Go web framework |
 | [kit](https://github.com/go-kit/kit) | 7669 | 764 | 33 | A standard library for microservices. |
@@ -35,4 +34,4 @@ Classy web framework for Go |
 | [gorest](https://github.com/tideland/gorest) | 23 | 1 | 1 | Tideland Go REST Server Library |
 | [webgo](https://github.com/bnkamalesh/webgo) | 16 | 2 | 1 | A very lightweight & simple web framework for Go |
 
-*Last Automatic Update: 2017-09-13 14:01:32*
+*Last Automatic Update: 2017-09-13 14:07:53*
