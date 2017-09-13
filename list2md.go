@@ -113,9 +113,8 @@ func saveRanking(result []Repo) {
 }
 
 func isDeprecated(repoURL string) bool {
-	size := len(deprecatedRepos)
-	for i := 0; i < size; i++ {
-		if repoURL == deprecatedRepos[i] {
+	for _, deprecatedRepo = range deprecatedRepos {
+		if repoURL == deprecatedRepo {
 			return true
 		}
 	}
