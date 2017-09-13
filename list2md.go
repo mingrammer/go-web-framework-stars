@@ -39,8 +39,8 @@ Please update **list.txt** (via Pull Request)
 )
 
 var (
-	deprecatedRepo = [1]string{"https://github.com/go-martini/martini"}
-	result            []Repo
+	deprecatedRepos = [1]string{"https://github.com/go-martini/martini"}
+	result          []Repo
 )
 
 func main() {
@@ -113,9 +113,9 @@ func saveRanking(result []Repo) {
 }
 
 func isDeprecated(repoURL string) bool {
-	size := len(deprecatedRepo)
+	size := len(deprecatedRepos)
 	for i := 0; i < size; i++ {
-		if repoURL == deprecatedRepo[i] {
+		if repoURL == deprecatedRepos[i] {
 			return true
 		}
 	}
