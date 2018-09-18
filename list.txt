@@ -28,3 +28,4 @@ https://github.com/go-kit/kit
 https://github.com/tmaiaroto/aegis
 https://github.com/rs/rest-layer
 https://github.com/vardius/gorouter
+https://github.com/go-aah/aah
