@@ -21,6 +21,7 @@ https://github.com/valyala/fasthttp
 https://github.com/tideland/gorest
 https://github.com/bnkamalesh/webgo
 https://github.com/go-swagger/go-swagger
+https://github.com/swaggo/swag
 https://github.com/labstack/armor
 https://github.com/devfeel/dotweb
 https://github.com/go-kit/kit
