@@ -23,6 +23,5 @@ jobs:
         git config user.name "${GITHUB_USER}"
         git config user.email "${GITHUB_EMAIL}"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-        git add .
-        git commit -m "Auto update"
-        git push origin master
+        git commit -am "Auto update"
+        git push -u origin master
