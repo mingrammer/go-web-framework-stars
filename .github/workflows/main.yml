@@ -9,11 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: echo ${{ secrets.GITHUB_TOKEN }} >> access_token.txt
     - uses: actions/setup-go@v1
       with:
         go-version: "1.13"
-    - run: go run list2md.go
+    - run: |
+        echo ${{ secrets.GITHUB_TOKEN }} >> access_token.txt
+        go run list2md.go
     - name: update the list
       env:
         GITHUB_USER: "mingrammer"
@@ -22,6 +23,6 @@ jobs:
         git config user.name "${GITHUB_USER}"
         git config user.email "${GITHUB_EMAIL}"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-        git commit -am "Auto update"
+        git add .
+        git commit -m "Auto update"
         git push origin master
-        
