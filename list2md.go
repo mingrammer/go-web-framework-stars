@@ -134,6 +134,7 @@ func saveRanking(repos []Repo) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer readme.Close()
 	readme.WriteString(head)
 	for _, repo := range repos {
 		if isDeprecated(repo.URL) {
