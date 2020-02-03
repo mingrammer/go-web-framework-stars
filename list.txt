@@ -1,6 +1,7 @@
 https://github.com/astaxie/beego
 https://github.com/gobuffalo/buffalo
 https://github.com/labstack/echo
+https://github.com/gofiber/fiber
 https://github.com/gin-gonic/gin
 https://github.com/NYTimes/gizmo
 https://github.com/ant0ine/go-json-rest
