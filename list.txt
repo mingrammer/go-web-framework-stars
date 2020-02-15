@@ -1,5 +1,6 @@
 https://github.com/astaxie/beego
 https://github.com/gobuffalo/buffalo
+https://github.com/kataras/iris
 https://github.com/labstack/echo
 https://github.com/gofiber/fiber
 https://github.com/gin-gonic/gin
