@@ -15,16 +15,17 @@ import (
 
 // Repo describes a Github repository with additional field, last commit date
 type Repo struct {
-	Name           string    `json:"name"`
-	Description    string    `json:"description"`
-	DefaultBranch  string    `json:"default_branch"`
-	Stars          int       `json:"stargazers_count"`
-	Forks          int       `json:"forks_count"`
-	Issues         int       `json:"open_issues_count"`
-	Created        time.Time `json:"created_at"`
-	Updated        time.Time `json:"updated_at"`
-	URL            string    `json:"html_url"`
-	LastCommitDate time.Time `json:"-"`
+	Name                   string    `json:"name"`
+	Description            string    `json:"description"`
+	DefaultBranch          string    `json:"default_branch"`
+	Stars                  int       `json:"stargazers_count"`
+	Forks                  int       `json:"forks_count"`
+	Issues                 int       `json:"open_issues_count"`
+	Created                time.Time `json:"created_at"`
+	Updated                time.Time `json:"updated_at"`
+	URL                    string    `json:"html_url"`
+	LastCommitDate         time.Time `json:"-"`
+	IssuesUpdatedLastMonth int       `json:"-"`
 }
 
 // HeadCommit describes a head commit of default branch
@@ -39,13 +40,17 @@ type HeadCommit struct {
 	} `json:"commit"`
 }
 
+type Issue struct {
+	ID int `json:"id"`
+}
+
 const (
 	head = `# Top Go Web Frameworks
 A list of popular github projects related to Go web framework (ranked by stars automatically)
 Please update **list.txt** (via Pull Request)
 
-| Project Name | Stars | Forks | Open Issues | Description | Last Commit |
-| ------------ | ----- | ----- | ----------- | ----------- | ----------- |
+| Project Name | Created | Stars | Forks | Open Issues | Issues Updated Last Month | Description | Last Commit |
+| ------------ | ------- | ----- | ----- | ----------- | ------------------------ | ----------- | ----------- |
 `
 	tail = "\n*Last Automatic Update: %v*"
 
@@ -70,6 +75,7 @@ func main() {
 		if strings.HasPrefix(url, "https://github.com/") {
 			var repo Repo
 			var commit HeadCommit
+			var issues []Issue
 
 			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
 			fmt.Println(repoAPI)
@@ -104,6 +110,25 @@ func main() {
 			}
 
 			repo.LastCommitDate = commit.Commit.Committer.Date
+
+			issueAPI := fmt.Sprintf("https://api.github.com/repos/%s/issues?access_token=%s&state=all&since=%s&per_page=100", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken, time.Now().AddDate(0, -1, 0).Format("2006-01-02T15:04:05Z"))
+			fmt.Println(issueAPI)
+
+			resp, err = http.Get(issueAPI)
+			if err != nil {
+				log.Fatal(err)
+			}
+			if resp.StatusCode != 200 {
+				log.Fatal(resp.Status)
+			}
+
+			decoder = json.NewDecoder(resp.Body)
+			if err = decoder.Decode(&issues); err != nil {
+				log.Fatal(err)
+			}
+
+			repo.IssuesUpdatedLastMonth = len(issues)
+
 			repos = append(repos, repo)
 
 			fmt.Printf("Repository: %v\n", repo)
@@ -140,7 +165,7 @@ func saveRanking(repos []Repo) {
 		if isDeprecated(repo.URL) {
 			repo.Description = warning + repo.Description
 		}
-		readme.WriteString(fmt.Sprintf("| [%s](%s) | %d | %d | %d | %s | %v |\n", repo.Name, repo.URL, repo.Stars, repo.Forks, repo.Issues, repo.Description, repo.LastCommitDate.Format("2006-01-02 15:04:05")))
+		readme.WriteString(fmt.Sprintf("| [%s](%s) | %s | %d | %d | %d | %d | %s | %v |\n", repo.Name, repo.URL, repo.Created.Format("2006-01-02 15:04:05"), repo.Stars, repo.Forks, repo.Issues, repo.IssuesUpdatedLastMonth, strings.ReplaceAll(repo.Description, "|", ""), repo.LastCommitDate.Format("2006-01-02 15:04:05")))
 	}
 	readme.WriteString(fmt.Sprintf(tail, time.Now().Format(time.RFC3339)))
 }
