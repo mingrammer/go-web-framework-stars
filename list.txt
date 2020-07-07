@@ -36,3 +36,4 @@ https://github.com/tusharsoni/copper
 https://github.com/micro/micro
 https://github.com/System-Glitch/goyave
 https://github.com/abahmed/gearbox
+https://github.com/yoyofx/yoyogo
