@@ -34,7 +34,7 @@ https://github.com/gramework/gramework
 https://github.com/johng-cn/gf
 https://github.com/tusharsoni/copper
 https://github.com/micro/micro
-https://github.com/System-Glitch/goyave
+https://github.com/go-goyave/goyave
 https://github.com/abahmed/gearbox
 https://github.com/yoyofx/yoyogo
 https://github.com/go-kratos/kratos
