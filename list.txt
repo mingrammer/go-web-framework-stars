@@ -31,7 +31,7 @@ https://github.com/vardius/gorouter
 https://github.com/go-aah/aah
 https://github.com/ponzu-cms/ponzu
 https://github.com/gramework/gramework
-https://github.com/johng-cn/gf
+https://github.com/gogf/gf
 https://github.com/tusharsoni/copper
 https://github.com/micro/micro
 https://github.com/go-goyave/goyave

@@ -27,6 +27,11 @@ type Repo struct {
 	LastCommitDate time.Time `json:"-"`
 }
 
+func (r Repo) FromInitial() int {
+	diff := r.LastCommitDate.Sub(r.Created)
+	return int(diff.Hours() / 24)
+}
+
 // HeadCommit describes a head commit of default branch
 type HeadCommit struct {
 	Sha    string `json:"sha"`
@@ -44,8 +49,8 @@ const (
 A list of popular github projects related to Go web framework (ranked by stars automatically)
 Please update **list.txt** (via Pull Request)
 
-| Project Name | Stars | Forks | Open Issues | Description | Last Commit |
-| ------------ | ----- | ----- | ----------- | ----------- | ----------- |
+| Project Name | Stars | Forks | Open Issues | Description | Last Commit (from Initial) |
+| ------------ | ----- | ----- | ----------- | ----------- | -------------------------- |
 `
 	tail = "\n*Last Automatic Update: %v*"
 
@@ -140,7 +145,18 @@ func saveRanking(repos []Repo) {
 		if isDeprecated(repo.URL) {
 			repo.Description = warning + repo.Description
 		}
-		readme.WriteString(fmt.Sprintf("| [%s](%s) | %d | %d | %d | %s | %v |\n", repo.Name, repo.URL, repo.Stars, repo.Forks, repo.Issues, repo.Description, repo.LastCommitDate.Format("2006-01-02 15:04:05")))
+
+		readme.WriteString(fmt.Sprintf(
+			"| [%s](%s) | %d | %d | %d | %s | %s (%dd) |\n", 
+			repo.Name, 
+			repo.URL, 
+			repo.Stars, 
+			repo.Forks, 
+			repo.Issues, 
+			repo.Description, 
+			repo.LastCommitDate.Format("2006-01-02 15:04:05"),
+			repo.FromInitial(),
+		))
 	}
 	readme.WriteString(fmt.Sprintf(tail, time.Now().Format(time.RFC3339)))
 }
