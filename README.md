@@ -17,6 +17,7 @@ Please update **list.txt** (via Pull Request)
 | [martini](https://github.com/go-martini/martini) | 11242 | 1116 | 13 | ⚠️ No longer maintained ⚠️  Classy web framework for Go | 2017-01-21 21:58:54 |
 | [micro](https://github.com/micro/micro) | 9977 | 869 | 68 | Micro is a cloud native development platform | 2021-04-17 16:56:11 |
 | [chi](https://github.com/go-chi/chi) | 9264 | 627 | 18 | lightweight, idiomatic and composable router for building Go HTTP services | 2021-04-16 11:47:44 |
+|  [go-zero](https://github.com/tal-tech/go-zero)  | 7629 | 941 | 42 | go-zero is a web and rpc framework written in Go. It's born to ensure the stability of the busy sites with resilient design. Builtin goctl greatly improves the development productivity. | 2021-04-21 10:23:27 |
 | [go-swagger](https://github.com/go-swagger/go-swagger) | 6305 | 982 | 455 | Swagger 2.0 implementation for go | 2021-04-11 16:18:21 |
 | [buffalo](https://github.com/gobuffalo/buffalo) | 6186 | 485 | 77 | Rapid Web Development w/ Go | 2021-03-11 13:53:01 |
 | [ponzu](https://github.com/ponzu-cms/ponzu) | 5203 | 375 | 28 | Headless CMS with automatic JSON API. Featuring auto-HTTPS from Let's Encrypt, HTTP/2 Server Push, and flexible server framework written in Go. | 2020-01-02 00:14:32 |
