@@ -71,10 +71,12 @@ func main() {
 			var repo Repo
 			var commit HeadCommit
 
-			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
+            //repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
+			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s", strings.TrimFunc(url[19:], trimSpaceAndSlash))
 			fmt.Println(repoAPI)
 
 			resp, err := http.Get(repoAPI)
+            resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -87,10 +89,12 @@ func main() {
 				log.Fatal(err)
 			}
 
-			commitAPI := fmt.Sprintf("https://api.github.com/repos/%s/commits/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), repo.DefaultBranch, accessToken)
+			//commitAPI := fmt.Sprintf("https://api.github.com/repos/%s/commits/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), repo.DefaultBranch, accessToken)
+			commitAPI := fmt.Sprintf("https://api.github.com/repos/%s/commits/%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), repo.DefaultBranch)
 			fmt.Println(commitAPI)
 
 			resp, err = http.Get(commitAPI)
+            resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
 			if err != nil {
 				log.Fatal(err)
 			}
