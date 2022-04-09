@@ -2,7 +2,7 @@ name: update
 
 on:
   schedule:
-    - cron: "35 18 * * SAT"
+    - cron: "45 18 * * SAT"
 
 jobs:
   build:
@@ -19,8 +19,8 @@ jobs:
         go run list2md.go
     - name: update the list
       env:
-        GITHUB_USER: "mingrammer"
-        GITHUB_EMAIL: "mingrammer@gmail.com"
+        GITHUB_USER: "okedialf"
+        GITHUB_EMAIL: "okedialf@gmail.com"
       run: |
         git config user.name "${GITHUB_USER}"
         git config user.email "${GITHUB_EMAIL}"
