@@ -70,8 +70,7 @@ func main() {
 		if strings.HasPrefix(url, "https://github.com/") {
 			var repo Repo
 			var commit HeadCommit
-
-            time.Sleep(4 * time.Second)
+			time.Sleep(4 * time.Second)
             //repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
 			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s", strings.TrimFunc(url[19:], trimSpaceAndSlash))
 			fmt.Println(repoAPI)
