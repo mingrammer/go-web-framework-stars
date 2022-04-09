@@ -67,11 +67,12 @@ func main() {
 	}
 
 	lines := strings.Split(string(byteContents), "\n")
-	for _, url := range lines {
+	//for _, url := range lines {
+    for _, url := range lines[1:5] {
 		if strings.HasPrefix(url, "https://github.com/") {
 			var repo Repo
 			var commit HeadCommit
-			time.Sleep(10 * time.Second)
+			time.Sleep(3 * time.Second)
             //repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
 			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s", strings.TrimFunc(url[19:], trimSpaceAndSlash))
 			fmt.Println(repoAPI)
