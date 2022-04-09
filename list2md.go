@@ -76,8 +76,8 @@ func main() {
 			fmt.Println(repoAPI)
 
 			resp, err := http.Get(repoAPI)
-            resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
-            resp.Header.Add("User-Agent","request")
+			resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
+			resp.Header.Add("User-Agent","request")
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -95,8 +95,8 @@ func main() {
 			fmt.Println(commitAPI)
 
 			resp, err = http.Get(commitAPI)
-            resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
-            resp.Header.Add("User-Agent","request")
+			resp.Header.Add("Authorization",fmt.Sprintf("token %s", accessToken))
+			resp.Header.Add("User-Agent","request")
 			if err != nil {
 				log.Fatal(err)
 			}
