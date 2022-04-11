@@ -7,7 +7,7 @@ Please update **list.txt** (via Pull Request)
 | [gin](https://github.com/gin-gonic/gin) | 57408 | 6486 | 505 | Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin. | 2022-03-29 06:03:54 |
 | [beego](https://github.com/beego/beego) | 27970 | 5458 | 24 | beego is an open-source, high-performance web framework for the Go programming language. | 2022-04-09 10:44:45 |
 | [kit](https://github.com/go-kit/kit) | 22779 | 2294 | 42 | A standard library for microservices. | 2022-03-15 20:38:00 |
-| [echo](https://github.com/labstack/echo) | 22068 | 1952 | 60 | High performance, minimalist Go web framework | 2022-04-05 17:34:49 |
+| [echo](https://github.com/labstack/echo) | 22067 | 1952 | 60 | High performance, minimalist Go web framework | 2022-04-05 17:34:49 |
 | [fiber](https://github.com/gofiber/fiber) | 19449 | 994 | 38 | ⚡️ Express inspired web framework written in Go | 2022-04-06 18:08:52 |
 | [fasthttp](https://github.com/valyala/fasthttp) | 17509 | 1463 | 39 | Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http | 2022-04-09 23:21:37 |
 | [kratos](https://github.com/go-kratos/kratos) | 17229 | 3375 | 54 | Your ultimate Go microservices framework for the cloud-native era. | 2022-04-10 08:18:56 |
@@ -47,4 +47,4 @@ Please update **list.txt** (via Pull Request)
 | [copper](https://github.com/gocopper/copper) | 43 | 5 | 0 | 🚀‏‏‎    ‎‏‏‎‏‏‎‎‎‎‎‎Copper is a Go toolkit complete with everything you need to build web apps. | 2021-09-26 17:34:36 |
 | [gorest](https://github.com/tideland/gorest) | 34 | 6 | 3 | RESTful Server Systems [DEPRECATED] | 2017-11-10 13:00:37 |
 
-*Last Automatic Update: 2022-04-11T08:03:46+03:00*
+*Last Automatic Update: 2022-04-11T08:08:53+03:00*
