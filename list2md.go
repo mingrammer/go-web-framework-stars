@@ -128,7 +128,7 @@ func main() {
 			fmt.Printf("Repository: %v\n", repo)
 			fmt.Printf("Head Commit: %v\n", commit)
 
-			time.Sleep(200 * time.Millisecond)
+			time.Sleep(time.Second)
 		}
 	}
 
