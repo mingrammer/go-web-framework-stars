@@ -71,10 +71,19 @@ func main() {
 			var repo Repo
 			var commit HeadCommit
 
-			repoAPI := fmt.Sprintf("https://api.github.com/repos/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), accessToken)
+			repoAPI := fmt.Sprintf(
+				"https://api.github.com/repos/%s",
+				strings.TrimFunc(url[19:], trimSpaceAndSlash),
+			)
 			fmt.Println(repoAPI)
 
-			resp, err := http.Get(repoAPI)
+			req, err := http.NewRequest(http.MethodGet, repoAPI, nil)
+			if err != nil {
+				log.Fatal(err)
+			}
+			req.Header.Set("Authorization", accessToken)
+
+			resp, err := http.DefaultClient.Do(req)
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -87,10 +96,20 @@ func main() {
 				log.Fatal(err)
 			}
 
-			commitAPI := fmt.Sprintf("https://api.github.com/repos/%s/commits/%s?access_token=%s", strings.TrimFunc(url[19:], trimSpaceAndSlash), repo.DefaultBranch, accessToken)
+			commitAPI := fmt.Sprintf(
+				"https://api.github.com/repos/%s/commits/%s",
+				strings.TrimFunc(url[19:], trimSpaceAndSlash),
+				repo.DefaultBranch,
+			)
 			fmt.Println(commitAPI)
 
-			resp, err = http.Get(commitAPI)
+			req, err = http.NewRequest(http.MethodGet, commitAPI, nil)
+			if err != nil {
+				log.Fatal(err)
+			}
+			req.Header.Set("Authorization", accessToken)
+
+			resp, err = http.DefaultClient.Do(req)
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -108,6 +127,8 @@ func main() {
 
 			fmt.Printf("Repository: %v\n", repo)
 			fmt.Printf("Head Commit: %v\n", commit)
+
+			time.Sleep(200 * time.Millisecond)
 		}
 	}
 
