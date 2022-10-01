@@ -81,7 +81,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			req.Header.Set("Authorization", accessToken)
+			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
 
 			resp, err := http.DefaultClient.Do(req)
 			if err != nil {
@@ -107,7 +107,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			req.Header.Set("Authorization", accessToken)
+			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
 
 			resp, err = http.DefaultClient.Do(req)
 			if err != nil {
