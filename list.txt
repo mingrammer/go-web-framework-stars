@@ -40,3 +40,5 @@ https://github.com/yoyofx/yoyogo
 https://github.com/go-kratos/kratos
 https://github.com/tal-tech/go-zero
 https://github.com/i-love-flamingo/flamingo
+https://github.com/cloudwego/kitex
+https://github.com/cloudwego/hertz
