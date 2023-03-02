@@ -53,7 +53,7 @@ Please update **list.txt** (via Pull Request)
 )
 
 var (
-	deprecatedRepos = [2]string{"https://github.com/go-martini/martini", "https://github.com/pilu/traffic"}
+	deprecatedRepos = [3]string{"https://github.com/go-martini/martini", "https://github.com/pilu/traffic", "https://github.com/gorilla/mux"}
 	repos           []Repo
 )
 
