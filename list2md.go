@@ -143,7 +143,7 @@ func trimSpaceAndSlash(r rune) bool {
 }
 
 func getAccessToken() string {
-	tokenBytes, err := ioutil.ReadFile("access_token.txt")
+	tokenBytes, err := os.ReadFile("access_token.txt")
 	if err != nil {
 		log.Fatal("Error occurs when getting access token")
 	}
