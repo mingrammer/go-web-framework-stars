@@ -12,7 +12,7 @@ Please update **list.txt** (via Pull Request)
 | [kit](https://github.com/go-kit/kit) | 25695 | 2478 | 43 | A standard library for microservices. | 2023-05-29 21:23:33 |
 | [kratos](https://github.com/go-kratos/kratos) | 21799 | 3955 | 81 | Your ultimate Go microservices framework for the cloud-native era. | 2023-12-09 15:12:59 |
 | [fasthttp](https://github.com/valyala/fasthttp) | 20458 | 1697 | 87 | Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http | 2023-12-05 18:49:41 |
-| [mux](https://github.com/gorilla/mux) | 19607 | 1830 | 22 | ⚠️ No longer maintained ⚠️  Package gorilla/mux is a powerful HTTP router and URL matcher for building Go web servers with 🦍 | 2023-12-07 04:58:53 |
+| [mux](https://github.com/gorilla/mux) | 19607 | 1830 | 22 | Package gorilla/mux is a powerful HTTP router and URL matcher for building Go web servers with 🦍 | 2023-12-07 04:58:53 |
 | [chi](https://github.com/go-chi/chi) | 16011 | 982 | 65 | lightweight, idiomatic and composable router for building Go HTTP services | 2023-10-22 00:41:35 |
 | [httprouter](https://github.com/julienschmidt/httprouter) | 15966 | 1469 | 87 | A high performance HTTP request router that scales well | 2022-06-03 15:51:59 |
 | [revel](https://github.com/revel/revel) | 13007 | 1415 | 99 | A high productivity, full-stack web framework for the Go language. | 2022-04-12 20:53:30 |
