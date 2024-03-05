@@ -42,3 +42,4 @@ https://github.com/tal-tech/go-zero
 https://github.com/i-love-flamingo/flamingo
 https://github.com/cloudwego/kitex
 https://github.com/cloudwego/hertz
+https://github.com/encoredev/encore
