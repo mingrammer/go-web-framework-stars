@@ -11,6 +11,7 @@ Please update **list.txt** (via Pull Request)
 | [go-zero](https://github.com/zeromicro/go-zero) | 27516 | 3790 | 359 | A cloud-native Go microservices framework with cli tool for productivity. | 2024-04-13 04:32:56 |
 | [kit](https://github.com/go-kit/kit) | 26081 | 2414 | 47 | A standard library for microservices. | 2024-03-13 13:42:15 |
 | [kratos](https://github.com/go-kratos/kratos) | 22390 | 3924 | 107 | Your ultimate Go microservices framework for the cloud-native era. | 2024-04-01 04:03:16 |
+| [go-micro](https://github.com/go-micro/go-micro) | 21400 | 2300 | 88 | Go Micro is a framework for distributed systems development. | 2024-04-15 23:49:07 | 
 | [fasthttp](https://github.com/valyala/fasthttp) | 21003 | 1717 | 91 | Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http | 2024-04-10 18:50:02 |
 | [mux](https://github.com/gorilla/mux) | 20133 | 1839 | 26 | Package gorilla/mux is a powerful HTTP router and URL matcher for building Go web servers with 🦍 | 2024-04-02 03:14:54 |
 | [chi](https://github.com/go-chi/chi) | 16991 | 953 | 70 | lightweight, idiomatic and composable router for building Go HTTP services | 2024-03-31 19:58:23 |
