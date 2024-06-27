@@ -49,5 +49,7 @@ Please update **list.txt** (via Pull Request)
 | [aegis](https://github.com/tmaiaroto/aegis) | 284 | 16 | 8 | Serverless Golang deploy tool and framework for AWS Lambda | 2019-07-28 17:59:41 |
 | [gorouter](https://github.com/vardius/gorouter) | 153 | 16 | 9 | Go Server/API micro framework, HTTP request router, multiplexer, mux | 2024-01-01 23:03:02 |
 | [gorest](https://github.com/tideland/gorest) | 34 | 6 | 3 | RESTful Server Systems [DEPRECATED] | 2017-11-10 13:00:37 |
+| [gFly](https://github.com/jiveio/gfly) | 0 | 0 | 0 | Laravel inspired web framework written in Go | 2024-06-27 19:51:37 |
+
 
 *Last Automatic Update: 2024-06-23T01:00:00Z*
