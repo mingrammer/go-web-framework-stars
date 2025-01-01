@@ -44,4 +44,4 @@ https://github.com/cloudwego/kitex
 https://github.com/cloudwego/hertz
 https://github.com/encoredev/encore
 https://github.com/gofr-dev/gofr
-https://github.com/yaitoo/htmx
+https://github.com/yaitoo/xun
