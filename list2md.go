@@ -77,23 +77,13 @@ func main() {
 			)
 			fmt.Println(repoAPI)
 
-			req, err := http.NewRequest(http.MethodGet, repoAPI, nil)
+			statusCode, err := fetchJSON(accessToken, repoAPI, &repo)
 			if err != nil {
-				log.Fatal(err)
-			}
-			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
-
-			resp, err := http.DefaultClient.Do(req)
-			if err != nil {
-				log.Fatal(err)
-			}
-			if resp.StatusCode != 200 {
-				log.Fatal(resp.Status)
-			}
-
-			decoder := json.NewDecoder(resp.Body)
-			if err = decoder.Decode(&repo); err != nil {
-				log.Fatal(err)
+				if statusCode == http.StatusNotFound {
+					log.Printf("Skipping missing repository %s (%s): %v", url, repoAPI, err)
+					continue
+				}
+				log.Fatalf("Failed to fetch repository %s (%s): %v", url, repoAPI, err)
 			}
 
 			commitAPI := fmt.Sprintf(
@@ -103,23 +93,13 @@ func main() {
 			)
 			fmt.Println(commitAPI)
 
-			req, err = http.NewRequest(http.MethodGet, commitAPI, nil)
+			statusCode, err = fetchJSON(accessToken, commitAPI, &commit)
 			if err != nil {
-				log.Fatal(err)
-			}
-			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
-
-			resp, err = http.DefaultClient.Do(req)
-			if err != nil {
-				log.Fatal(err)
-			}
-			if resp.StatusCode != 200 {
-				log.Fatal(resp.Status)
-			}
-
-			decoder = json.NewDecoder(resp.Body)
-			if err = decoder.Decode(&commit); err != nil {
-				log.Fatal(err)
+				if statusCode == http.StatusNotFound {
+					log.Printf("Skipping repository with missing head commit %s (%s): %v", url, commitAPI, err)
+					continue
+				}
+				log.Fatalf("Failed to fetch head commit for %s (%s): %v", url, commitAPI, err)
 			}
 
 			repo.LastCommitDate = commit.Commit.Committer.Date
@@ -140,6 +120,30 @@ func main() {
 
 func trimSpaceAndSlash(r rune) bool {
 	return unicode.IsSpace(r) || (r == rune('/'))
+}
+
+func fetchJSON(accessToken, url string, target interface{}) (int, error) {
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return 0, err
+	}
+	req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return resp.StatusCode, fmt.Errorf("status %s", resp.Status)
+	}
+
+	decoder := json.NewDecoder(resp.Body)
+	if err = decoder.Decode(target); err != nil {
+		return resp.StatusCode, err
+	}
+	return resp.StatusCode, nil
 }
 
 func getAccessToken() string {
