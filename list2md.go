@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -131,15 +132,17 @@ func fetchJSON(accessToken, url string, target any) (int, error) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		if resp != nil && resp.Body != nil {
-			resp.Body.Close()
-		}
 		return 0, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return resp.StatusCode, fmt.Errorf("status %s", resp.Status)
+		body, _ := io.ReadAll(resp.Body)
+		bodyMessage := strings.TrimSpace(string(body))
+		if bodyMessage == "" {
+			return resp.StatusCode, fmt.Errorf("status %s", resp.Status)
+		}
+		return resp.StatusCode, fmt.Errorf("status %s: %s", resp.Status, bodyMessage)
 	}
 
 	decoder := json.NewDecoder(resp.Body)
