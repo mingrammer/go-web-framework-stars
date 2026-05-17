@@ -9,7 +9,7 @@ import (
 func TestFetchJSONSuccess(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"name":"demo"}`))
+		_, _ = w.Write([]byte(`{"name":"demo"}`))
 	}))
 	defer server.Close()
 
