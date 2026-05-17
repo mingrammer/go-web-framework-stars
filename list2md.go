@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -61,7 +60,7 @@ var (
 func main() {
 	accessToken := getAccessToken()
 
-	byteContents, err := ioutil.ReadFile("list.txt")
+	byteContents, err := os.ReadFile("list.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -153,7 +152,7 @@ func fetchJSON(accessToken, url string, target any) (int, error) {
 }
 
 func getAccessToken() string {
-	tokenBytes, err := ioutil.ReadFile("access_token.txt")
+	tokenBytes, err := os.ReadFile("access_token.txt")
 	if err != nil {
 		log.Fatal("Error occurs when getting access token")
 	}
