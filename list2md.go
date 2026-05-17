@@ -122,7 +122,7 @@ func trimSpaceAndSlash(r rune) bool {
 	return unicode.IsSpace(r) || (r == rune('/'))
 }
 
-func fetchJSON(accessToken, url string, target interface{}) (int, error) {
+func fetchJSON(accessToken, url string, target any) (int, error) {
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return 0, err
@@ -131,6 +131,9 @@ func fetchJSON(accessToken, url string, target interface{}) (int, error) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
+		if resp != nil && resp.Body != nil {
+			resp.Body.Close()
+		}
 		return 0, err
 	}
 	defer resp.Body.Close()
