@@ -133,17 +133,19 @@ func fetchJSON(accessToken, url string, target any) (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		resp.Body.Close()
+		body, readErr := io.ReadAll(resp.Body)
+		if readErr != nil {
+			return resp.StatusCode, fmt.Errorf("status %s (failed to read response body: %w)", resp.Status, readErr)
+		}
 		bodyMessage := strings.TrimSpace(string(body))
 		if bodyMessage == "" {
 			return resp.StatusCode, fmt.Errorf("status %s", resp.Status)
 		}
 		return resp.StatusCode, fmt.Errorf("status %s: %s", resp.Status, bodyMessage)
 	}
-	defer resp.Body.Close()
 
 	decoder := json.NewDecoder(resp.Body)
 	if err = decoder.Decode(target); err != nil {
