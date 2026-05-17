@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -60,7 +60,7 @@ var (
 func main() {
 	accessToken := getAccessToken()
 
-	byteContents, err := ioutil.ReadFile("list.txt")
+	byteContents, err := os.ReadFile("list.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -77,23 +77,13 @@ func main() {
 			)
 			fmt.Println(repoAPI)
 
-			req, err := http.NewRequest(http.MethodGet, repoAPI, nil)
+			statusCode, err := fetchJSON(accessToken, repoAPI, &repo)
 			if err != nil {
-				log.Fatal(err)
-			}
-			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
-
-			resp, err := http.DefaultClient.Do(req)
-			if err != nil {
-				log.Fatal(err)
-			}
-			if resp.StatusCode != 200 {
-				log.Fatal(resp.Status)
-			}
-
-			decoder := json.NewDecoder(resp.Body)
-			if err = decoder.Decode(&repo); err != nil {
-				log.Fatal(err)
+				if statusCode == http.StatusNotFound {
+					log.Printf("Skipping missing repository %s (%s): %v", url, repoAPI, err)
+					continue
+				}
+				log.Fatalf("Failed to fetch repository %s (%s): %v", url, repoAPI, err)
 			}
 
 			commitAPI := fmt.Sprintf(
@@ -103,23 +93,13 @@ func main() {
 			)
 			fmt.Println(commitAPI)
 
-			req, err = http.NewRequest(http.MethodGet, commitAPI, nil)
+			statusCode, err = fetchJSON(accessToken, commitAPI, &commit)
 			if err != nil {
-				log.Fatal(err)
-			}
-			req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
-
-			resp, err = http.DefaultClient.Do(req)
-			if err != nil {
-				log.Fatal(err)
-			}
-			if resp.StatusCode != 200 {
-				log.Fatal(resp.Status)
-			}
-
-			decoder = json.NewDecoder(resp.Body)
-			if err = decoder.Decode(&commit); err != nil {
-				log.Fatal(err)
+				if statusCode == http.StatusNotFound {
+					log.Printf("Skipping repository with missing head commit %s (%s): %v", url, commitAPI, err)
+					continue
+				}
+				log.Fatalf("Failed to fetch head commit for %s (%s): %v", url, commitAPI, err)
 			}
 
 			repo.LastCommitDate = commit.Commit.Committer.Date
@@ -142,8 +122,40 @@ func trimSpaceAndSlash(r rune) bool {
 	return unicode.IsSpace(r) || (r == rune('/'))
 }
 
+func fetchJSON(accessToken, apiURL string, target any) (int, error) {
+	req, err := http.NewRequest(http.MethodGet, apiURL, nil)
+	if err != nil {
+		return 0, err
+	}
+	req.Header.Set("authorization", fmt.Sprintf("Bearer %s", accessToken))
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, readErr := io.ReadAll(resp.Body)
+		if readErr != nil {
+			return resp.StatusCode, fmt.Errorf("status %s (failed to read response body: %w)", resp.Status, readErr)
+		}
+		bodyMessage := strings.TrimSpace(string(body))
+		if bodyMessage == "" {
+			return resp.StatusCode, fmt.Errorf("status %s", resp.Status)
+		}
+		return resp.StatusCode, fmt.Errorf("status %s: %s", resp.Status, bodyMessage)
+	}
+
+	decoder := json.NewDecoder(resp.Body)
+	if err = decoder.Decode(target); err != nil {
+		return resp.StatusCode, err
+	}
+	return resp.StatusCode, nil
+}
+
 func getAccessToken() string {
-	tokenBytes, err := ioutil.ReadFile("access_token.txt")
+	tokenBytes, err := os.ReadFile("access_token.txt")
 	if err != nil {
 		log.Fatal("Error occurs when getting access token")
 	}
