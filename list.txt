@@ -10,6 +10,7 @@ https://github.com/go-macaron/macaron
 https://github.com/revel/revel
 https://github.com/go-martini/martini
 https://github.com/gorilla/mux
+https://github.com/nokia/restful
 https://github.com/goji/goji
 https://github.com/gocraft/web
 https://github.com/pilu/traffic
